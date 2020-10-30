@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import { Switch, Route } from 'react-router-dom';
+import Login from './Login';
+import Landing from './Landing';
+import {autoLogin} from './Redux/actions'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css';
+import { connect } from 'react-redux';
+
+class App extends Component {
+
+  componentDidMount(){
+    this.props.autoLogin();
+  }
+  render(){
+    console.log("userReducer:", this.props.userReducer)
+  
+    return (
+      <div className="App">
+        <Switch>
+          <Route path="/login" component={Login}/>
+          <Route path="/" component={Landing}/>
+        </Switch>
+      </div>
+    );
+  }
+  
 }
 
-export default App;
+let msp = (state) => {
+  return {
+    userReducer: state.userReducer
+  }
+}
+
+let mdp = (dispatch) => {
+  return {
+    autoLogin: () => dispatch(autoLogin())
+  };
+};
+export default connect(msp, mdp)(App);
