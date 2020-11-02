@@ -45,7 +45,8 @@ export const autoLogin = () => dispatch => {
         .then(res => res.json())
         .then(data => {
             if(!data["message"]){
-                localStorage.setItem("token", data.token);
+                debugger;
+                localStorage.setItem("token", !!data.token? data.token : localStorage.getItem("token"));
                 dispatch(setUser(data.user));
             }
         })
