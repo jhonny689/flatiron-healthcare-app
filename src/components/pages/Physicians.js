@@ -34,7 +34,7 @@ class Physicians extends Component {
             <div>
                 <h1>Physicians</h1>
                 <ListContainer cName="list-container" endpoint="physicians" handleClick={this.displayPhysician} payload={this.state.physicians}/>
-                <ShowContainer cName="show-container" payload={this.state.physicians.filter(physician => physician.id === parseInt(this.state.phyisicianId))}/>
+                <ShowContainer cName="show-container" endpoint="physicians" payload={this.state.physicians.filter(physician => physician.id === parseInt(this.state.phyisicianId))}/>
             </div>
         )
     }

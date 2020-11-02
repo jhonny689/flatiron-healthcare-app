@@ -33,7 +33,7 @@ export const fetchUser = (userInfo) => dispatch => {
 }
 
 export const autoLogin = () => dispatch => {
-    // debugger;
+    debugger;
     if(localStorage.getItem("token") && localStorage.getItem("token")!=="undefined")
         fetch('http://localhost:3000/auto_login', {
             headers: {
