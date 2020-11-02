@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {login, fetchUser} from './Redux/actions';
 import thunk from 'redux-thunk';
 import rootReducer from './Redux/reducer';
+import { Redirect } from 'react-router-dom';
 
 // let store = createStore(rootReducer, applyMiddleware(thunk))
 class Login extends Component{
@@ -28,6 +29,9 @@ class Login extends Component{
     }
 
     render(){
+        if(this.props.loggedIn){
+            return <Redirect to="/landing"/>
+        }
         return(
             <form onSubmit={this.login}>
                 <input type='text' name='username' placeholder='username' value={this.state.username} onChange={this.handleInputChange} ></input>
@@ -38,10 +42,15 @@ class Login extends Component{
         )
     }
 }
+function msp(state){
+    console.log(state);
+    return {loggedIn: state.userReducer.loggedIn}
+}
+
 function mdp(dispatch){
     return {fetchUser: (userInfo)=> dispatch(fetchUser(userInfo))}
 }
 
 
 
-export default connect(null, mdp)(Login)
+export default connect(msp, mdp)(Login)
