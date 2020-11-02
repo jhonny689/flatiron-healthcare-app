@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -9,7 +9,7 @@ import Physicians from './components/pages/Physicians';
 import Treatments from './components/pages/Treatments';
 
 const Landing =(props) =>{
-    let { path, url } = useRouteMatch();
+    let {url} = useRouteMatch();
     // debugger;
     if(props.loggedIn)
         return(

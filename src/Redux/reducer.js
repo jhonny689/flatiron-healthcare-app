@@ -11,10 +11,13 @@ function userReducer(state = defaultState, action){
     switch(action.type){
         case "SET_USER":
             console.log("in reducer", action.payload);
-            return {
-                loggedIn: true,
-                user: {...action.payload}
-            };
+            if(action.payload)
+                return {
+                    loggedIn: true,
+                    user: {...action.payload}
+                };
+            else
+                return state;
         case "LOG_OUT":
             localStorage.clear();
             return {

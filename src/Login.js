@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
-import {createStore, applyMiddleware} from 'redux';
 import {connect} from 'react-redux';
-import {login, fetchUser} from './Redux/actions';
-import thunk from 'redux-thunk';
-import rootReducer from './Redux/reducer';
+import {fetchUser} from './Redux/actions';
 import { Redirect } from 'react-router-dom';
 
 // let store = createStore(rootReducer, applyMiddleware(thunk))
@@ -21,16 +18,14 @@ class Login extends Component{
 
     login = event => {
         event.preventDefault();
-        
-        const {history} = this.props;
-
+        // const {history} = this.props;
         this.props.fetchUser(this.state);
-        history.push('/users');
     }
 
     render(){
+        // debugger;
         if(this.props.loggedIn){
-            return <Redirect to="/landing"/>
+            return <Redirect to="/landing/home"/>
         }
         return(
             <form onSubmit={this.login}>
