@@ -13,6 +13,10 @@ class Navbar extends Component{
         this.setState({clicked: !this.state.clicked });
     }
 
+    itemClicked = e => {
+        this.setState({clicked: !this.state.clicked});
+    }
+
     render(){
         return(
             <nav className="NavbarItems">
@@ -24,7 +28,7 @@ class Navbar extends Component{
                     {MenuItems.map((item, index) => {
                         return(
                             <li key={index} >
-                                <Link className={item.cName} to={item.url}> {item.title} </Link>
+                                <Link className={item.cName} to={item.url} onClick={this.itemClicked}> {item.title} </Link>
                             </li>
                         )
                     })}
