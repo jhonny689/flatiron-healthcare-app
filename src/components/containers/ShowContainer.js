@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { Link, Redirect } from "react-router-dom";
 import "./ShowContainer.css";
 
 export default class ShowContainer extends Component{
@@ -6,6 +7,7 @@ export default class ShowContainer extends Component{
         return(
             <div className={this.props.cName}>
                 <table>
+                    <tbody>
                     <tr>
                         <td className="label">Name</td>
                         <td>:</td>
@@ -26,6 +28,7 @@ export default class ShowContainer extends Component{
                         <td>:</td>
                         <td>{toDis.year}</td>
                     </tr>
+                    </tbody>
                 </table>
             </div>
         )
@@ -35,6 +38,7 @@ export default class ShowContainer extends Component{
         return (
             <div className={this.props.cName}>
                 <table>
+                    <tbody>
                     <tr>
                         <td className="label">Name</td>
                         <td>:</td>
@@ -55,16 +59,21 @@ export default class ShowContainer extends Component{
                         <td>:</td>
                         <td>{toDis.physician_id}</td>
                     </tr>
+                    </tbody>
                 </table>
+                <Link to={{
+                    pathname: '/landing/journal',
+                    state: {treatment: toDis}
+                    }} >
+                    <h3>Log Journal</h3>
+                </Link>
             </div>
         )
     }
 
     render(){
-        debugger
         let toDis = this.props.payload[0];
         if(!!toDis){
-            // debugger;
             switch (this.props.endpoint){
                 case "physicians":
                     return this.renderPhysicianDisplayCard(toDis);

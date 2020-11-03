@@ -16,7 +16,6 @@ class Physicians extends Component {
         })
         .then(resp => resp.json())
         .then(data => {
-            // debugger;
             this.setState({
                 physicians: data.data.map(el => el.attributes)
             });
@@ -24,7 +23,6 @@ class Physicians extends Component {
     }
 
     displayPhysician = physicianId => {
-        // debugger;
         this.setState({
             phyisicianId: physicianId
         })

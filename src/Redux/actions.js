@@ -15,7 +15,7 @@ export const setUser = (payload) => ({type: "SET_USER", payload});
 export const logUserOut = () => ({type: "LOG_OUT"});
 
 export const fetchUser = (userInfo) => dispatch => {
-    // debugger;
+
     fetch('http://localhost:3000/login', {
         method: "POST",
         headers: {
@@ -26,14 +26,13 @@ export const fetchUser = (userInfo) => dispatch => {
     })
     .then(resp => resp.json())
     .then(data => {
-        // debugger;
         localStorage.setItem("token", data.token);
         dispatch(setUser(data.user));
     })
 }
 
 export const autoLogin = () => dispatch => {
-    debugger;
+
     if(localStorage.getItem("token") && localStorage.getItem("token")!=="undefined")
         fetch('http://localhost:3000/auto_login', {
             headers: {
@@ -45,7 +44,6 @@ export const autoLogin = () => dispatch => {
         .then(res => res.json())
         .then(data => {
             if(!data["message"]){
-                debugger;
                 localStorage.setItem("token", !!data.token? data.token : localStorage.getItem("token"));
                 dispatch(setUser(data.user));
             }

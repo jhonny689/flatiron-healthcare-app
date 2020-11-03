@@ -16,7 +16,6 @@ class Treatments extends Component {
         })
         .then(resp => resp.json())
         .then(data => {
-            debugger;
             this.setState({
                 treatments: data
             });
@@ -24,7 +23,6 @@ class Treatments extends Component {
     }
 
     displayTreatment = treatmentId => {
-        // debugger;
         this.setState({
             treatmentId: treatmentId
         })

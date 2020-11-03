@@ -7,10 +7,10 @@ import Home from './components/pages/Home';
 import Profile from './components/pages/Profile';
 import Physicians from './components/pages/Physicians';
 import Treatments from './components/pages/Treatments';
+import Journal from './components/pages/Journal';
 
 const Landing =(props) =>{
     let {url} = useRouteMatch();
-    // debugger;
     if(props.loggedIn)
         return(
             <div>
@@ -20,6 +20,7 @@ const Landing =(props) =>{
                     <Route path={`${url}/profile`} component={Profile}/>
                     <Route path={`${url}/physicians`} component={Physicians}/>
                     <Route path={`${url}/treatments`} component={Treatments}/>
+                    <Route path={`${url}/journal`} render={props => <Journal {...props}/>}/>
                 </Switch>
             </div>
         )

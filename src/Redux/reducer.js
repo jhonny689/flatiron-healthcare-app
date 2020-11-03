@@ -7,7 +7,6 @@ let defaultState = {
 
 function userReducer(state = defaultState, action){
     //return the value of the loggedInUser key in our state;
-    //debugger;
     switch(action.type){
         case "SET_USER":
             console.log("in reducer", action.payload);
