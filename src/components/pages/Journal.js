@@ -1,5 +1,6 @@
 import DayJournal from '../containers/DayJournal';
 import {Component} from 'react';
+import './Journal.css';
 
 class Journal extends Component{
     state = {
@@ -31,7 +32,7 @@ class Journal extends Component{
         let buttons = [];
         while (count > 0){
             let id = days-(count-1);
-            buttons.push(<span key={id} id={id} onClick={this.loadDayJournal}>{id}</span>);
+            buttons.push(<span className="buttonSpan" key={id} id={id} onClick={this.loadDayJournal}>{id}</span>);
             count--;
         }
         return buttons;
@@ -40,6 +41,26 @@ class Journal extends Component{
     loadDayJournal = e => {
         this.setState({targetDay: e.target.id});
     }
+
+    saveDailyJournal = vitals => {
+
+        let journal = {...vitals, treatment_id: this.props.location.state.treatment.id}
+        console.log("vitals", vitals);
+        console.log("journal",journal);
+        fetch('http://localhost:3000/journals',{
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+                "accept": "application/json",
+                "authorization": `Bearer ${localStorage.getItem("token")}`
+            },
+            body: JSON.stringify(journal)
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            debugger;
+        })
+    }
     
     render(){
         return(
@@ -47,7 +68,7 @@ class Journal extends Component{
                 <div className="days-div">
                     {this.renderDaysButtons()}
                 </div>
-                <DayJournal targetDay={this.state.targetDay}/>
+                <DayJournal targetDay={this.state.targetDay} saveDailyJournal={this.saveDailyJournal}/>
             </div>
         )
     }

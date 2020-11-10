@@ -1,0 +1,37 @@
+div.profile_container {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+}
+
+div.labels_list {
+    display: flex;
+    flex-direction: column;
+}
+
+div.values_list {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+h3 {
+    padding: 25px;
+    white-space: nowrap;
+    text-align: left;
+}
+
+input.editable-el{
+    padding: 25px;
+    width: 300px;
+    font-size:18px;
+    border: none;
+}
+
+input.editable{
+    padding: 23.5px;
+    width: 300px;
+    font-size:18px;
+    border: none;
+    border-bottom: solid black;
+}

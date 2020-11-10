@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import ListContainer from '../containers/ListContainer'
 import ShowContainer from '../containers/ShowContainer'
 
+import './Physicians.css'
+
 class Physicians extends Component {
     state = {
         physicians: [],
@@ -29,8 +31,7 @@ class Physicians extends Component {
     }
     render(){
         return(
-            <div>
-                <h1>Physicians</h1>
+            <div className='page-container'>
                 <ListContainer cName="list-container" endpoint="physicians" handleClick={this.displayPhysician} payload={this.state.physicians}/>
                 <ShowContainer cName="show-container" endpoint="physicians" payload={this.state.physicians.filter(physician => physician.id === parseInt(this.state.phyisicianId))}/>
             </div>

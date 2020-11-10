@@ -1,0 +1,17 @@
+div.days-div{
+    display: flex;
+    padding: 2px;
+}
+
+span.buttonSpan{
+    background-color: blueviolet;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: auto;
+    width: 75px;
+    height: 75px;
+    align-content: center;
+    vertical-align: middle;
+    text-align: center;
+    padding-top: 25px;
+}

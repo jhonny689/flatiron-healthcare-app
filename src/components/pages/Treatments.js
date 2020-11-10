@@ -29,8 +29,7 @@ class Treatments extends Component {
     }
     render(){
         return(
-            <div>
-                <h1>Treatments</h1>
+            <div className='page-container'>
                 <ListContainer cName="list-container" endpoint="treatments" handleClick={this.displayTreatment} payload={this.state.treatments}/>
                 <ShowContainer cName="show-container" endpoint="treatments" payload={this.state.treatments.filter(treatment => treatment.id === parseInt(this.state.treatmentId))}/>
             </div>
