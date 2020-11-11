@@ -13,7 +13,7 @@ function userReducer(state = defaultState, action){
             if(action.payload)
                 return {
                     loggedIn: true,
-                    user: {...action.payload}
+                    user: {...action.payload},
                 };
             else
                 return state;

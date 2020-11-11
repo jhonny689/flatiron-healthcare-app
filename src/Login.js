@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {fetchUser} from './Redux/actions';
 import { Redirect } from 'react-router-dom';
+import './Login.scss';
 
 // let store = createStore(rootReducer, applyMiddleware(thunk))
 class Login extends Component{
@@ -27,12 +28,18 @@ class Login extends Component{
             return <Redirect to="/landing/home"/>
         }
         return(
-            <form onSubmit={this.login}>
-                <input type='text' name='username' placeholder='username' value={this.state.username} onChange={this.handleInputChange} ></input>
-                <input type='password' name='password' placeholder='password' value={this.state.password} onChange={this.handleInputChange} ></input>
-                <input type='submit'></input>
-                <input type='cancel'></input>
-            </form>
+            <div className='login-Div'>
+                <div className='transparent'>
+                    <h1 className="login-logo">Flatiron <i className="fas fa-notes-medical"></i> Healthcare</h1>
+                    <form className='login' onSubmit={this.login}>
+                        <label className='form_title'>Welcome, kindly sign in:</label><br/>
+                        <input className='login_input' type='text' name='username' placeholder='username' value={this.state.username} onChange={this.handleInputChange} ></input><br/>
+                        <input className='login_input' type='password' name='password' placeholder='password' value={this.state.password} onChange={this.handleInputChange} ></input><br/>
+                        <input className='submit_input login_btn' type='submit'></input>
+                        <input className='reset_input login_btn' type='reset'></input>
+                    </form>
+                </div>
+            </div>
         )
     }
 }

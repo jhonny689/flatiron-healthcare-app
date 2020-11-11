@@ -27,6 +27,7 @@ export const fetchUser = (userInfo) => dispatch => {
     .then(resp => resp.json())
     .then(data => {
         localStorage.setItem("token", data.token);
+        data.user["isPhysician"] = data.is_physician;
         dispatch(setUser(data.user));
     })
 }
@@ -45,6 +46,7 @@ export const autoLogin = () => dispatch => {
         .then(data => {
             if(!data["message"]){
                 localStorage.setItem("token", !!data.token? data.token : localStorage.getItem("token"));
+                data.user["isPhysician"] = data.is_physician;
                 dispatch(setUser(data.user));
             }
         })

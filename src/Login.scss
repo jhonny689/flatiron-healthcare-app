@@ -1,0 +1,115 @@
+div.login-Div {
+    height: 100vh;
+    width: 100vw;
+    background-image: url(assets/624111.jpg);
+    align-content: left;
+}
+
+div.transparent {
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0,0,0,0.65);
+}
+
+div.login-Div form.login {
+    position: absolute;
+    top: 200px;
+    left: 50px;
+    width: fit-content;
+    background-blend-mode: lighten;
+    background: #407ccdff;
+    padding: 25px;
+    box-shadow: 3px 3px 4px #324359ff;
+    border-radius: 3px;
+}
+
+div.login-Div form.login label {
+    align-self: left;
+    font-size: 25px;
+    color: #ffff;
+    position: absolute;
+    left: 25px;
+    font-weight: bold;
+}
+
+input.login_input {
+    background-color: transparent;
+    border: none;
+    border-bottom: solid white;
+    color: white;
+    height: 50px;
+    padding: 15px;
+    padding-top: 25px;
+    margin: 5px;
+    font-size: 30px;
+
+}
+
+input.login_input:focus {
+    background-color: transparent;
+    border: none;
+    border-bottom: solid white;
+    color: white;
+    height: 50px;
+    padding: 15px;
+    padding-top: 25px;
+    margin-top: 10px;
+    font-size: 30px;
+
+}
+
+input.login_btn {
+    height: 50px;
+    font-size: 20px;
+    width: 75px;
+    margin-top: 10px;
+    background-color: #09519dff;
+}
+
+input.reset_input {
+    position: absolute;
+    right: 25px;
+}
+
+input.submit_input{
+    position: absolute;
+    right: 105px;
+}
+
+.login-logo {
+    background: rgba(50,67,89,0.75);
+    color: white;
+    font-size: xxx-large;
+    display: block;
+    width: inherit;
+    padding: 25px;
+    padding-left: 50px;
+    position: absolute;
+    top: 60px;
+    text-align: left;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #b26b5bff;;
+    opacity: 1; /* Firefox */
+}
+body{
+    height: 100%;
+    width: 100vw;
+    // background-image: url(assets/Molecules_glare_communication_3428x1928.jpg);
+    background-color:#d4d4d4ff;
+    background-size: cover;
+}
+div.main-div {
+    width: 100vw;
+    // background-image: url(assets/Molecules_glare_communication_3428x1928.jpg);
+    //background-color: rgba(50, 67, 89, 1);
+    background-size: cover;
+    align-content: left;
+}
+
+// div.main-transparent {
+//     height: 100%;
+//     width: 100vw;
+//     background: rgba(255,255,255,0.3);
+// }
