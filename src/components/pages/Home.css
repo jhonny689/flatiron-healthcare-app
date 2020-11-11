@@ -1,19 +1,14 @@
 .img_btn {
     width: 250px;
     height: 250px;
-    /* border: solid cyan; */
-    /* border-style: ridge; */
     padding: 10px;
     cursor: pointer;
-    box-shadow: 1px 2px 2px darkcyan;
 }
 
 .img_btn:hover {
     background-color: #09519dff;
-    /* border: solid blue; */
-    /* border-style: ridge; */
-    opacity: 0.4;
-    filter: alpha(opacity=40);
+    /* opacity: 0.4;
+    filter: alpha(opacity=40); */
 }
 
 .btn_container {
@@ -26,18 +21,8 @@
     .img_btn {
         width: 250px;
         height: 250px;
-        /* border: solid cyan; */
-        /* border-style: ridge; */
         padding: 10px;
         cursor: pointer;
-        box-shadow: 1px 2px 2px darkcyan;
-    }
-    
-    .img_btn:hover {
-        /* border: solid blue; */
-        /* border-style: ridge; */
-        opacity: 0.4;
-        filter: alpha(opacity=40);
     }
     
     .btn_container {
@@ -45,5 +30,6 @@
         flex-direction: column;
         justify-content: space-evenly;
         margin: auto;
+        width: fit-content;
     }
 }

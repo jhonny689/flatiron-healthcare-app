@@ -2,36 +2,90 @@ div.profile_container {
     display: flex;
     flex-direction: row;
     padding: 20px;
+    justify-content: center;
 }
 
 div.labels_list {
     display: flex;
     flex-direction: column;
+    background-color: rgba(50, 67, 89, 1);
+    margin-right: 50px;
+    box-shadow: 3px 3px 4px #324359ff;
+    color: white;
+}
+
+i.profile {
+    background-color: #324359ff;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    box-shadow: 3px 3px 4px #324359ff;
 }
 
 div.values_list {
+    background-color: rgba(255, 255, 255, 1);
     display: flex;
     flex-direction: column;
     width: fit-content;
+    box-shadow: 3px 3px 4px #324359ff;
 }
 
 h3 {
-    padding: 25px;
+    padding: 20px;
     white-space: nowrap;
     text-align: left;
 }
 
 input.editable-el{
-    padding: 25px;
-    width: 300px;
+    padding: 20px;
+    width: 400px;
     font-size:18px;
     border: none;
+    background-color: transparent;
 }
 
 input.editable{
-    padding: 23.5px;
-    width: 300px;
+    padding: 20px;
+    width: 400px;
     font-size:18px;
     border: none;
     border-bottom: solid black;
+    background-color: transparent;
+}
+
+input.editable:hover{
+    padding: 20px;
+    width: 400px;
+    font-size:18px;
+    border: none;
+    border-bottom: solid black;
+    background-color: rgba(50, 67, 89, 0.9);
+    color: white;
+}
+
+select.editable-el{
+    padding: 20px;
+    width: 400px;
+    font-size:18px;
+    border: none;
+    background-color: transparent;
+}
+
+select.editable{
+    padding: 20px;
+    width: 400px;
+    font-size:18px;
+    border: none;
+    border-bottom: solid black;
+    background-color: transparent;
+}
+
+select.editable:hover{
+    padding: 20px;
+    width: 400px;
+    font-size:18px;
+    border: none;
+    border-bottom: solid black;
+    background-color: rgba(50, 67, 89, 0.9);
+    color: white;
 }

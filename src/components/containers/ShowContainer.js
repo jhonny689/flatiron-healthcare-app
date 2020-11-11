@@ -1,12 +1,12 @@
 import { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./ShowContainer.css";
 
 export default class ShowContainer extends Component{
     renderPhysicianDisplayCard = toDis => {
         return(
             <div className={this.props.cName}>
-                <table>
+                <table className={this.props.cName}>
                     <tbody>
                     <tr>
                         <td className="label">Name</td>
@@ -57,7 +57,7 @@ export default class ShowContainer extends Component{
                     <tr>
                         <td className="label">Physician</td>
                         <td>:</td>
-                        <td>{toDis.physician_id}</td>
+                        <td>{toDis.physician_name}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -71,6 +71,12 @@ export default class ShowContainer extends Component{
         )
     }
 
+    renderEmptyPage = () => {
+        return (
+            <div className={this.props.cName}></div>
+        );
+    }
+    
     render(){
         let toDis = this.props.payload[0];
         if(!!toDis){
@@ -85,7 +91,7 @@ export default class ShowContainer extends Component{
                 
         }else
             return(
-            <h2>this is where we will render the {this.props.endpoint} info</h2>
+                this.renderEmptyPage()
             )
     }
 }

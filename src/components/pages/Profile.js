@@ -11,11 +11,13 @@ class Profile extends Component {
             f_name: "",
             l_name: "",
             dob: "",
+            gender: "",
             height: "",
             weight: "",
             email: "",
             phone_number: "",
         },
+        editable: false,
     }
     componentDidMount(){
         // debugger;
@@ -34,6 +36,7 @@ class Profile extends Component {
                 })
             })
         }else{
+            // debugger;
             fetch('http://localhost:3000/patients/'+userId,
             {headers: {
                 "content-type": "application/json",
@@ -43,9 +46,10 @@ class Profile extends Component {
             .then(resp => resp.json())
             .then(data => {
                 // debugger;
-                this.setState({
-                    userProfile: data.data.attributes
-                })
+                if (data && data.data)
+                    this.setState({
+                        userProfile: data.data.attributes
+                    })
             })
         }
     }
@@ -55,11 +59,15 @@ class Profile extends Component {
         for(let el of headers){
             el.readOnly=false;
             el.classList.add('editable');
+            if(el.type === "select-one")
+                el.disabled = false;
         }
+        this.setState({
+            editable: true
+        })
     }
 
     handleInputChange = e => {
-        debugger;
         this.setState({
             userProfile: {...this.state.userProfile, [e.target.name]: e.target.value}
         });
@@ -81,7 +89,13 @@ class Profile extends Component {
         for(let el of headers){
             el.readOnly=true;
             el.classList.remove('editable');
+            // debugger;
+            if(el.type === "select-one")
+                el.disabled = true;
         }
+        this.setState({
+            editable: false
+        })
     }
 
     render(){
@@ -91,6 +105,7 @@ class Profile extends Component {
                     <h3>First Name</h3>
                     <h3>Last Name</h3>
                     <h3>Date of Birth</h3>
+                    <h3>Gender</h3> 
                     <h3>Height [ft]</h3>
                     <h3>Weight [lbp]</h3>
                     <h3>Email</h3>
@@ -100,13 +115,19 @@ class Profile extends Component {
                     <input type='text' className='editable-el' onChange={this.handleInputChange} name='f_name' value={this.state.userProfile.f_name} readOnly={true}/>
                     <input type='text' className='editable-el' onChange={this.handleInputChange} name='l_name' value={this.state.userProfile.l_name} readOnly={true}></input>
                     <input type='date' className='editable-el' onChange={this.handleInputChange} name='dob' value={this.state.userProfile.dob ? this.state.userProfile.dob : " "} readOnly={true}></input>
+                    <select className='editable-el' onChange={this.handleInputChange} disabled={true} name='gender' value={this.state.userProfile.gender} readOnly={true}>
+                        <option value="cis male">Cis Male</option>
+                        <option value="cis female">Cis Female</option>
+                        <option value="trans male">Trans Male</option>
+                        <option value="Trans female">Trans Female</option>
+                    </select>
                     <input type='number' className='editable-el' step='.1' onChange={this.handleInputChange} name='height' value={this.state.userProfile.height} readOnly={true}></input>
                     <input type='number' className='editable-el' step='.1' onChange={this.handleInputChange} name='weight' value={this.state.userProfile.weight} readOnly={true}></input>
                     <input type='email' className='editable-el' onChange={this.handleInputChange} name='email' value={this.state.userProfile.email} readOnly={true}></input>
                     <input type='tel' className='editable-el' onChange={this.handleInputChange} name='phone_number' value={this.state.userProfile.phone_number} readOnly={true}></input>
                 </div>
-                <i className="fas fa-user-edit" onClick={this.makeProfileEditable}></i>
-                <i className="fas fa-save" onClick={this.update}></i>
+                {!this.state.editable? <i className="fas fa-user-edit profile" onClick={this.makeProfileEditable}></i> : ""}
+                {this.state.editable?<i className="fas fa-save profile" onClick={this.update}></i>:""}
             </div>
         )
     }

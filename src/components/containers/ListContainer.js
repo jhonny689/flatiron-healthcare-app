@@ -1,4 +1,5 @@
 import { Component } from "react";
+import './ListContainer.css';
 
 export default class ListContainer extends Component{
     handleClick = e => {
@@ -8,17 +9,17 @@ export default class ListContainer extends Component{
     renderList = () => {
         if(this.props.endpoint==="physicians")
             return this.props.payload.map( element => {
-                return <li key={element.id} id={element.id} onClick={this.handleClick}>{element.specialization}</li>
+                return <li key={element.id} id={element.id} onClick={this.handleClick} className='button'>{element.specialization}</li>
             })
         else if(this.props.endpoint === "treatments")
             return this.props.payload.map(element => {
-                return <li key={element.id} id={element.id} onClick={this.handleClick}>{element.treatment_name}</li>
+                return <li key={element.id} id={element.id} onClick={this.handleClick} className='button'>{element.treatment_name}</li>
             })
     }
     
     render(){
         return(
-            <div>
+            <div className={this.props.cName}>
                 <ul className={this.props.cName}>
                     {this.renderList()}
                 </ul>

@@ -1,14 +1,16 @@
 .page-container{
      display: flex;
      flex-direction: row;
-     margin-top: 20px;
+     padding: 20px;
+     justify-content: center;
+     /* margin-top: 20px; */
 }
 
 @media screen and (max-width: 960px) {
     .page-container{
         display: flex;
         flex-direction: column;
-        margin-top: 20px;
+        padding: 20px;
         margin: auto;
    }
 }

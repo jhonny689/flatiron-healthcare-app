@@ -1,0 +1,51 @@
+table input[type='number'].editable-el {
+    border-bottom: solid black;
+    width: 150px;
+}
+form {
+    width: inherit;
+    position: relative;
+    float: left;
+    left: 50px;
+}
+
+form table {
+    width: inherit;
+}
+
+form table tbody td {
+    height: fit-content;
+    padding: 0px;
+}
+form tr {
+    height: fit-content;
+    padding: 0px;
+}
+
+table input[type='number'].editable-el:disabled {
+    width: 150px;
+    color: #b26b5bff;
+}
+
+input.button {
+    padding: 8px 20px;
+    border-radius: 4px;
+    background: #09519dff;
+    color: white;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+}
+
+input.button:hover {
+    padding: 8px 20px;
+    transition: all 0.3s ease-out;
+    background: #d4d4d4ff;
+    color: #324359ff;
+    transition: 250ms;
+}
+
+input.button:disabled{
+    visibility: hidden;
+}

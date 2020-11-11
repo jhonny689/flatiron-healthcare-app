@@ -20,7 +20,7 @@ class Journal extends Component{
         .then(resp => resp.json())
         .then(res => {
             this.setState({
-                currentDay: res.count + 1,
+                currentDay: res.length + 1,
                 previousDays: res
             })
         })
@@ -32,7 +32,11 @@ class Journal extends Component{
         let buttons = [];
         while (count > 0){
             let id = days-(count-1);
-            buttons.push(<span className="buttonSpan" key={id} id={id} onClick={this.loadDayJournal}>{id}</span>);
+            if(id< this.state.currentDay){
+                buttons.push(<li className="button" key={id} id={id} onClick={this.loadDayJournal}>{"Day "+id} <i className="fas fa-check"></i></li>);
+            }else{
+                buttons.push(<li className="button" key={id} id={id} onClick={this.loadDayJournal}>{"Day "+id}</li>)
+            }
             count--;
         }
         return buttons;
@@ -40,6 +44,7 @@ class Journal extends Component{
 
     loadDayJournal = e => {
         this.setState({targetDay: e.target.id});
+        // debugger;
     }
 
     saveDailyJournal = vitals => {
@@ -58,17 +63,26 @@ class Journal extends Component{
         })
         .then(resp => resp.json())
         .then(data => {
-            debugger;
+            //debugger;
+        })
+    }
+
+    returnEnteredData = () => {
+        return this.state.previousDays.filter(day => {
+            // debugger;
+            return day.day_num === parseInt(this.state.targetDay);
         })
     }
     
     render(){
         return(
-            <div>
-                <div className="days-div">
-                    {this.renderDaysButtons()}
+            <div className='page-container'>
+                <div className="list-container">
+                    <ul className='list-container'>
+                        {this.renderDaysButtons()}
+                    </ul>
                 </div>
-                <DayJournal targetDay={this.state.targetDay} saveDailyJournal={this.saveDailyJournal}/>
+                <DayJournal cName="show-container" entered={this.returnEnteredData()} targetDay={this.state.targetDay} saveDailyJournal={this.saveDailyJournal}/>
             </div>
         )
     }

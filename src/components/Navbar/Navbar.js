@@ -14,9 +14,13 @@ class Navbar extends Component{
     }
 
     itemClicked = e => {
-        this.setState({clicked: !this.state.clicked});
+        this.setState({clicked: false});
+        if(e.target.innerText === "Sign out")
+            this.signout();
     }
-
+    signout = e => {
+        this.props.signoutHandler();
+    }
     render(){
         return(
             <nav className="NavbarItems">
@@ -33,7 +37,7 @@ class Navbar extends Component{
                         )
                     })}
                 </ul>
-                <Button>Sign Up</Button>
+                <Button onClick={this.signout}>Sign out</Button>
             </nav>
         )
     }

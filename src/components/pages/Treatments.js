@@ -16,8 +16,10 @@ class Treatments extends Component {
         })
         .then(resp => resp.json())
         .then(data => {
+            let res = data.data.map(treatment=>treatment.attributes)
+            debugger;
             this.setState({
-                treatments: data
+                treatments: res
             });
         })
     }
